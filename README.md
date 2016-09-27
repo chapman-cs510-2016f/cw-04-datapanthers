@@ -1,8 +1,8 @@
 # CS510 CW 4
 
-**Author(s):** _\<your name(s)\>_
+**Author(s):** _Simrath Ratra, Afnan Alqahtani, Andrew nguyen_
 
-[![Build Status](https://travis-ci.org/chapman-cs510-2016f/cw-04-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2016f/cw-04-YOURNAME)
+[![Build Status](https://travis-ci.org/chapman-cs510-2016f/cw-04-datapanthers.svg?branch=master)](https://travis-ci.org/chapman-cs510-2016f/cw-04-datapanthers)
 
 **Due date:** 2016/09/27
 
@@ -28,7 +28,7 @@ Complete the following exercises, saving your solutions in the indicated files. 
 
 Analyze in this section what you found useful about this assignment in your own words. Include any lingering questions or comments that you may have.
 
-**CHANGEME**
+**This assignment was good to give us practice using markdown files and Jupyter. We did use ipython3 in the terminal to test out things as well, and there were some good interactive tutorials to get us used to it. We liked using implementing an algorithm as it gave us practicing with algorithms. The %time and %timeit was new, so we had to look it up on our own to figure how to use it. Perhaps a small tutorial or slide about it could help those of us who are unfamiliar with coding and not used to searching up answers online on our own. Other than that, I thought this assignment was great.**
 
 ## Honor Pledge
 
@@ -39,4 +39,4 @@ I pledge that all the work in this repository is my own with only the following 
 
 Signed,
 
-**YOURNAME**
+**Simrath Ratra, Afnan Alqahtani, Andrew nguyen**
