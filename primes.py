@@ -2,13 +2,17 @@
 
 import math
 
-"""Module Description
-This function takes the input the user puts in, n, and outputs
-the factorial of n.
-The function will return just the product as an integer.
+"""CS510 - Classwork 4 - Prime Numbers
+This module is uses to takes an integer input, n, and outputs a list of strings giving 
 
-There are two functions in this script, eratosthenes(n) uses nested while loops to implement the algorithm.
-eratosthenes2(n) uses a generator to impelement the algorithm.
+There are two functions in this script:
+    eratosthenes(n) uses nested while loops to implement the algorithm.
+    eratosthenes2(n) uses a generator to implement the algorithm.
+When calling the module on an interpreter, the module will pass the initial value, n, through the function
+eratosthenes2(n).
+
+Inside the generator function, we took inspiration from this site about producing a generator for prime numbers.
+http://codereview.stackexchange.com/questions/74550/prime-number-sequence-generator
 
 """
 
@@ -23,27 +27,27 @@ def eratosthenes(n):
     """
     
     # implementing our initial variables
-    i=2
-    x= []
+    counter = 2
+    final_list= []
     
     # creating a while loop to fill our list with all the numbers smaller than n
-    while i<n:
-        x.append(i)
-        i += 1
+    while counter < n:
+        final_list.append(counter)
+        counter += 1
 
-    # Nested while loop to traverse through our list, divide the first number of the list with the rest of the numbers
-    # and if it is divisible, remove the number from the list. We then increase our counter to find the next prime number
-    # and continue until we reach the end of the list.
+    # Nested while loop to traverse through our list, divide the first number of the list 
+    # with the rest of the numbers and if it is divisible, remove the number from the list.
+    # We then increase our counter to find the next prime number and continue until we reach the end of the list.
     counter = 0
-    while counter<len(x):
-        count2 = counter+1
-        while count2<len(x):
-            if x[count2]%x[counter] == 0:
-                x.remove(x[count2])
+    while counter < len(final_list):
+        count2 = counter + 1
+        while count2<len(final_list):
+            if final_list[count2] % final_list[counter] == 0:
+                final_list.remove(final_list[count2])
             count2 += 1
         counter += 1
         
-    return x
+    return final_list
 
 
 
@@ -55,17 +59,20 @@ def eratosthenes2(n):
     to find prime numbers, while this function takes those primes and adds them to our final list.
     We return a list of prime numbers whose values are less than the user input.
     """
+    p = gen_eratosthenes()
+    
     # creating our prime list
     prime_list = []
 
-    # for loop going from 1 to our user input value.
-    for i in range(1, n):
+    # We produce a while loop that will call our generator infinitely amount of times, 
+    # appending our prime number and exiting when needed.
+    while True:
         # calling our generator to get the next prime value
         prime = next(p)
 
-        #if the prime number is greater than our initial input value, then we know our list is completed
-        # and we exit out of our loop to return our list. Otherwise, we add the prime number to our list.
-        if prime > n:
+        # This if statement ensures that we exit out of the loop once the generator produces a
+        # prime number, larger than our n. Otherwise it adds the prime number to our list.
+        if prime >= n:
             break
         else:
             prime_list.append(prime)
@@ -75,26 +82,30 @@ def eratosthenes2(n):
 
 
 def gen_eratosthenes():
-    # initiating our initial variable
+    # initiating our initial variable as 2, as it is the first prime number (We are not considering 1 to be prime)
     count = 2
-    
-    # our generator loop. Will remain true, until we find a non-prime number
-    while True:
-        isprime = True
 
-        # As we increase the count, we check the divisors from 2 to square root of n + 1
-        # if it is divisible, we break out of the loop as the number is not a prime number.
+    # We create a while loop that can run infinitely amount of times.
+    while True:
+        prime = True
+
+        # This equation inside the for loop, which I have cited above in my module docstring,
+        # will always produce numbers low enough to check our count variable by taking the square root of 
+        # the count, then adding one.
+        # If the loop will then use the the modulo of our count varible and will only yield count
+        # if it is non divisible by any other number that is checked within the for statement.
         for x in range(2, int(math.sqrt(count) + 1)):
-            if count % x == 0: 
-                isprime = False
+            if count % x == 0:
+                prime = False
                 break
-        # If the number is a prime, we yield the result, then we increase our counter variable to continue.
-        if isprime:
+
+        if prime:
             yield count
 
         count += 1
 
-p = gen_eratosthenes()
+
+
 
 
 def main(argv):
@@ -106,4 +117,13 @@ if __name__ == "__main__":
         print ("Error: did not input a number. Will set a default argument of 5")
         main(5)
     else:
-        main(int(argv[1]))
+        try:
+            val = int(argv[1])
+            if int(argv[1]) < 0:
+                print ("Error: inputed a negative number. Please enter a positive number")
+            elif int(argv[1]) == 0:
+                print ("Error: inputed 0, Please enter a number greater than 1")
+            else:
+                main(int(argv[1]))
+        except ValueError:
+            print("Input was not an integer!")
