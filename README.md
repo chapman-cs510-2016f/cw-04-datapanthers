@@ -36,6 +36,7 @@ I pledge that all the work in this repository is my own with only the following 
 
 * Content of starter files supplied by the instructor;
 * Code borrowed from another source, documented with correct attribution in the code and summarized here.
+* I also included this source in the module docstring that I used it for and explained how I used it:   http://codereview.stackexchange.com/questions/74550/prime-number-sequence-generator
 
 Signed,
 
