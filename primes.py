@@ -17,7 +17,7 @@ http://codereview.stackexchange.com/questions/74550/prime-number-sequence-genera
 """
 
 def eratosthenes(n):
-    """Function Docstring
+    """Eratosthenes Algorithm
     eratosthenes(n) -> list
     
     This function will take the number n and return the list of prime numbers less than n in a list. 
@@ -52,7 +52,7 @@ def eratosthenes(n):
 
 
 def eratosthenes2(n):
-    """Function Docstring
+    """Eratosthenes Algorithm, version two
     eratosthenes2(n) -> list
     
     This function will use the prime generator function, defined below as gen_eratosthenes()
@@ -82,6 +82,11 @@ def eratosthenes2(n):
 
 
 def gen_eratosthenes():
+    """Erastosthenes generator funtion
+
+    This function uses a generator to calculate the next prime number and yields the result.
+    It does so by using a for loop, with I gained inspiration from the website, sourced in the module docstring,
+    """
     # initiating our initial variable as 2, as it is the first prime number (We are not considering 1 to be prime)
     count = 2
 
@@ -108,8 +113,8 @@ def gen_eratosthenes():
 
 
 
-def main(argv):
-    print (eratosthenes2(argv))
+def main(fact):
+    print (eratosthenes2(fact))
 
 if __name__ == "__main__":
     from sys import argv
