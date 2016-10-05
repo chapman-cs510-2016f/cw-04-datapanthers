@@ -34,6 +34,12 @@ def eratosthenes(n):
     while counter < n:
         final_list.append(counter)
         counter += 1
+    #
+    ### INSTRUCTOR COMMENT:
+    # Above is a cumbersome way to create a list of consecutive integers (though it works).
+    # Consider range(n), which does this automatically.
+    # Or, if you need to create a nontrivial list, consider a list comprehension.
+    #
 
     # Nested while loop to traverse through our list, divide the first number of the list 
     # with the rest of the numbers and if it is divisible, remove the number from the list.
@@ -76,6 +82,13 @@ def eratosthenes2(n):
             break
         else:
             prime_list.append(prime)
+    
+    #
+    ### INSTRUCTOR COMMENT:
+    # The above logic is very convoluted.  Typically, if you have to invoke "break", then you
+    # should rethink your algorithm to see if there is a simpler way to do what you are trying
+    # to do. In this case, you can replace this entire function block by a list comprehension:
+    #   return [next(p) for _ in range(n)]
 
     return prime_list
 
